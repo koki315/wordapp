@@ -51,6 +51,7 @@ export default {
       user.addUser(userData, this.$store.state.nameOfChannel1, this.$store.state.nameOfChannel2, this.$store.state.nameOfChannel3);
       this.email = "";
       this.password = "";
+      this.$router.push('/channel1');
     },
   },
 };

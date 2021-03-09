@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>投稿</h1>
     <form action="" v-on:submit.prevent="Add">
       <input type="text" v-model="body" />
       <input type="text" v-model="meaning" />
@@ -18,6 +19,9 @@ export default {
     };
   },
   methods: {
+    update(){
+
+    },
     async Add() {
       const word = await Word.add({
         email: this.$store.state.userEmail,

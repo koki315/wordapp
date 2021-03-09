@@ -1,23 +1,25 @@
 <template>
-  <div>
-    <h1>Top</h1>
-    <ul>
-      <li v-for="(word, index) in words" :key="index">{{ word.body }}</li>
-    </ul>
-    <SideMenu />
+  <div class="main-container">
+    <SideMenu :startShuffle="shuffleStart" :stopShuffle="shuffleStop" />
+    <WordList v-if="!shuffle"/>
+
+    <Shuffle v-else />
   </div>
 </template>
-
 <script>
 import SideMenu from "@/components/SideMenu.vue";
-import Word from "@/models/word.js";
+import WordModel from "@/models/word.js";
+import WordList from "@/components/WordList";
+import Shuffle from "@/components/Shuffle.vue";
 export default {
   components: {
     SideMenu,
+    WordList,
+    Shuffle,
   },
   data() {
     return {
-      words: [],
+      shuffle: false,
     };
   },
   created() {
@@ -26,34 +28,29 @@ export default {
       this.$store.state.userEmail,
       this.$route.params.channelId
     );
-     this.fetchWords();
+    this.fetchWords();
   },
 
   methods: {
     async fetchWords() {
-      const words = await Word.fetch(
+      const words = await WordModel.fetch(
         this.$store.state.userEmail,
         this.$route.params.channelId
       );
       this.$store.commit("updateWords", words);
-      this.words = this.$store.state.words;
     },
-  },
-  computed:{
-    wordsState:function(){
-      return  this.$store.getters['words']
-    }
-  },
-  watch: {
-    $route: function() {
-      this.fetchWords();
+    shuffleStart() {
+      this.shuffle = true;
     },
-    wordsState:function(){
-      console.log('wordsupdate');
-      this.fetchWords();
-    }
+    shuffleStop() {
+      this.shuffle = false;
+    },
   },
 };
 </script>
 
-<style></style>
+<style>
+.main-container {
+  display: flex;
+}
+</style>

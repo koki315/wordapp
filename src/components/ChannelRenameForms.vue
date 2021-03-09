@@ -1,13 +1,16 @@
 <template>
   <div>
     <div class="channel1Rename">
+      <p>チャンネル名変更</p>
       <input type="text"  v-model="nameOfChannel1" />
     <button v-on:click='submitChannel1'>submit</button>
     </div>
     <div class="channel2Rename">
+      <p>チャンネル名変更</p>
       <input type="text"  v-model="nameOfChannel2" />
     <button v-on:click='submitChannel2'>submit</button>
     </div>
+    <p>チャンネル名変更</p>
     <div class="channel3Rename">
       <input type="text"  v-model="nameOfChannel3" />
     <button v-on:click='submitChannel3'>submit</button>

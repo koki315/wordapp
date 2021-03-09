@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1>login</h1>
-    <form>
-      <!-- <form @submit.prevent="registerUser"> -->
+    
+      <form @submit.prevent="Login">
       <div>
         <label for="email">メールアドレス:</label>
         <input type="email" id="email" v-model="email" />
@@ -11,7 +11,7 @@
         <label for="password">パスワード:</label>
         <input type="password" id="password" v-model="password" />
       </div>
-      <button type="submit" @click="Login">登録</button>
+      <button type="submit" >登録</button>
     </form>
   </div>
 </template>
@@ -48,6 +48,7 @@ export default {
        this.$store.commit("updateNameOfChannel1", channels.nameOfChannel1);
       this.$store.commit("updateNameOfChannel2", channels.nameOfChannel2);
       this.$store.commit("updateNameOfChannel3", channels.nameOfChannel3);
+      this.$router.push('/channel1');
     },
   },
 };
