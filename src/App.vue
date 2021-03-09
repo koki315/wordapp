@@ -1,7 +1,6 @@
 <template>
   <v-app>
    <Header></Header>
-
     <v-main>
       <Forms v-if="!this.$store.state.idToken" />
       <router-view v-if="this.$store.state.idToken"></router-view>
@@ -22,11 +21,21 @@ export default {
   
 };
 </script>
-<style scoped>
-input {
-  border: #000 1px solid;
-}
+<style>
 a {
   color: #fff !important;
+}
+main{
+  padding: 50px 50px  0!important;
+}
+/* .container{
+  width: 80%;
+} */
+.v-main__wrap{
+  padding: 0 50px 0;
+}
+.v-card {
+  padding: 20px;
+  transition: 0.5s;
 }
 </style>

@@ -1,7 +1,8 @@
 <template>
-  <div>
-    <RenameForms />
+  <div class="menu_container">
+    
     <WordForms />
+    <RenameForms />
     <button v-on:click="start">shuffle</button>
     <button v-on:click="stop">stop</button>
   </div>
@@ -15,24 +16,27 @@ export default {
     RenameForms,
     WordForms,
   },
-  props:{
-  startShuffle:{
-      type:Function,
+  props: {
+    startShuffle: {
+      type: Function,
     },
-stopShuffle:{
-      type:Function,
-    }
+    stopShuffle: {
+      type: Function,
+    },
   },
-  methods:{
-    start(){
-     
+  methods: {
+    start() {
       this.startShuffle();
     },
-    stop(){
+    stop() {
       this.stopShuffle();
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style></style>
+<style scoped>
+.menu_container{
+  height: 100vh;
+}
+</style>>

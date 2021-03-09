@@ -6,7 +6,7 @@ const word = class word {
     const docRef = await db
       .collection("Users")
       .doc(email)
-      .collection(channel)
+      .collection(channel).orderBy("body")
       .get();
 
     let array = [];

@@ -13,10 +13,9 @@
 export default {
   data() {
     return {
-      words: [],
       originalBody: this.body,
       originalMeaning: this.meaning,
-      answer:false
+      answer: false,
     };
   },
   props: {
@@ -43,12 +42,12 @@ export default {
     },
   },
   methods: {
-   checkAnswer(){
-     this.answer = true
-   },
-   closeAnswer(){
-     this.answer  = false
-   }
+    checkAnswer() {
+      this.answer = true;
+    },
+    closeAnswer() {
+      this.answer = false;
+    },
   },
   watch: {
     body: function() {

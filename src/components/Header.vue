@@ -1,22 +1,27 @@
 <template>
-  <div v-if="this.$store.state.idToken" >
-     <p  v-on:click="logout">logout</p>
-      <router-link to="/channel1">{{
-        this.$store.state.nameOfChannel1
-      }}</router-link>
-      <router-link to="/channel2">{{
-        this.$store.state.nameOfChannel2
-      }}</router-link>
-      <router-link to="/channel3">{{
-        this.$store.state.nameOfChannel3
-      }}</router-link>
+  <div class="header-container">
+    <h2>Word Book</h2>
+    <div class="links_container">
+<router-link to="/channel1" v-if="this.$store.state.idToken" tag="h2" class="router-link">{{
+      this.$store.state.nameOfChannel1
+    }}</router-link>
+    <router-link to="/channel2" v-if="this.$store.state.idToken" tag="h2" class="router-link" >{{
+      this.$store.state.nameOfChannel2
+    }}</router-link>
+    <router-link to="/channel3" v-if="this.$store.state.idToken" tag="h2" class="router-link">{{
+      this.$store.state.nameOfChannel3
+    }}</router-link>
+    <v-btn elevation="2"
+  small v-on:click="logout" v-if="this.$store.state.idToken">ログアウト</v-btn>
+    </div>
+    
   </div>
 </template>
 
 <script>
 import user from "@/models/user.js";
 export default {
-methods: {
+  methods: {
     logout() {
       console.log("logout", this.$store.state.nameOfChannel1);
       user.update(
@@ -28,9 +33,35 @@ methods: {
       this.$store.commit("resetState");
     },
   },
-}
+};
 </script>
 
-<style>
-
+<style scoped>
+.header-container {
+  padding: 30px 50px 30px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  background: #0A0A23;
+}
+.links_container{
+  margin-left: auto;
+   display: flex;
+   align-items: center;
+}
+.router-link{
+  list-style: none;
+  cursor: pointer;
+  margin-right: 10px;
+  opacity: 0.7;
+  transition-duration:500ms;
+}
+.router-link:hover{
+  
+  opacity: 1;
+}
+.router-link-active{
+  opacity: 1;
+  transform: scale(1.1);
+}
 </style>

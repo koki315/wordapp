@@ -21,17 +21,24 @@ export default {
   components: {
     ShuffledWord,
   },
- data() {
+  data() {
     return {
-    
       words: this.$store.state.words,
-  
-      
     };
   },
-}
+  created() {
+    const array = this.$store.state.words;
+    let newArray = [];
+    while (array.length > 0) {
+      let n = array.length;
+      let k = Math.floor(Math.random() * n);
+      console.log(n, k);
+      newArray.push(array[k]);
+      array.splice(k, 1);
+    }
+    this.words  = newArray
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
