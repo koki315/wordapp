@@ -2,11 +2,11 @@
   <v-container class="main-container">
     <v-row>
       <v-col cols="4">
-        <SideMenu :startShuffle="shuffleStart" :stopShuffle="shuffleStop" />
+        <SideMenu :shuffleStopped ="fetchWords" />
       </v-col>
       <v-col cols="8">
-        <WordList v-if="!shuffle" />
-        <Shuffle v-else />
+        <Shuffle v-if="this.$store.state.shuffle" />
+        <WordList v-else />
       </v-col>
     </v-row>
   </v-container>
@@ -50,6 +50,12 @@ export default {
     shuffleStop() {
       this.shuffle = false;
       this.fetchWords();
+    },
+  },
+   watch: {
+    wordsState: function() {
+      console.log('word');
+      this.words = this.$store.state.words;
     },
   },
 };

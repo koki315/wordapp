@@ -1,7 +1,6 @@
 <template>
   <v-container class="auth_form_container">
-    <v-card elevation="5"
-  tile>
+    <v-card elevation="5" tile>
       <h1>新規登録</h1>
       <v-form v-on:submit.prevent="Signup">
         <div class="form_input">
@@ -12,8 +11,7 @@
           <label for="password">パスワード:</label>
           <v-text-field type="password" id="password" v-model="password" />
         </div>
-        <v-btn   elevation="2"
-  x-large type="submit">登録</v-btn>
+        <v-btn elevation="2" x-large type="submit">登録</v-btn>
       </v-form>
     </v-card>
   </v-container>
@@ -76,7 +74,7 @@ form {
   margin-bottom: 40px;
 }
 
-.auth_form_container{
+.auth_form_container {
   width: 100%;
 }
 </style>

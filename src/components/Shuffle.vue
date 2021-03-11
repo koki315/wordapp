@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>shuffle</h1>
     <v-container>
       <v-card>
         <ShuffledWord

@@ -1,9 +1,9 @@
 <template>
   <v-container class="auth_form_container">
-    <v-card elevation="5" tile>
+    <v-card  tile>
       <v-form>
         <div class="channel1Rename">
-          <p>チャンネル名変更</p>
+          <h2>チャンネル名変更</h2>
           <v-text-field
             type="text"
             v-model="nameOfChannel1"
@@ -12,7 +12,6 @@
           <v-btn v-on:click="submitChannel1">submit</v-btn>
         </div>
         <div class="channel2Rename">
-          <p>チャンネル名変更</p>
           <v-text-field
             type="text"
             v-model="nameOfChannel2"
@@ -20,7 +19,7 @@
           />
           <v-btn v-on:click="submitChannel2">submit</v-btn>
         </div>
-        <p>チャンネル名変更</p>
+
         <div class="channel3Rename">
           <v-text-field
             type="text"
@@ -64,9 +63,7 @@ export default {
 </script>
 
 <style scoped>
-.auth_form_container{
+.auth_form_container {
   width: 100%;
 }
-
 </style>
-

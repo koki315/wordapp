@@ -1,11 +1,11 @@
 <template>
   <v-container class="auth_form_container">
-    <v-card>
-      <v-form action="" v-on:submit.prevent="Add">
+    <v-card tile>
+      <v-form @submit.prevent="Add">
         <h2>単語登録</h2>
-        <v-text-field type="text" v-model="body"  />
-        <v-text-field type="text" v-model="meaning"  />
-        <button v-on:submit.prevent>submit</button>
+        <v-text-field type="text" v-model="body" />
+        <v-text-field type="text" v-model="meaning" />
+        <v-btn   type="submit">登録</v-btn>
       </v-form>
     </v-card>
   </v-container>
@@ -23,6 +23,7 @@ export default {
   methods: {
     update() {},
     async Add() {
+      console.log('add');
       const word = await Word.add({
         email: this.$store.state.userEmail,
         channel: this.$route.params.channelId,
@@ -47,4 +48,6 @@ export default {
 .auth_form_container {
   width: 100%;
 }
+
+
 </style>

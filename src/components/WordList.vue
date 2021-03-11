@@ -1,8 +1,10 @@
 <template>
   <div>
     <v-container>
-      <v-card>
-        <Word
+      
+      <v-card tile>
+        <Loading v-if="this.$store.state.loading"></Loading>
+        <Word v-else
           v-for="(word, index) in words"
           :key="index"
           :body="word.body"
@@ -18,6 +20,7 @@
 <script>
 import Word from "@/components/Word";
 import WordModel from "@/models/word.js";
+import  Loading from  '@/components/Loading';
 export default {
   data() {
     return {
@@ -25,10 +28,11 @@ export default {
     };
   },
   components: {
-    Word,
+    Word,Loading
   },
   methods: {
     async fetchWords() {
+      this.$store.commit('setLoading', true);
       const words = await WordModel.fetch(
         this.$store.state.userEmail,
         this.$route.params.channelId
@@ -37,10 +41,12 @@ export default {
       this.$store.commit("updateWords", words);
       console.log(this.$store.state.words)
       this.words = this.$store.state.words;
+      this.$store.commit('setLoading', false)
     },
   },
   computed: {
     wordsState: function() {
+      console.log('computed');
       return this.$store.getters["words"];
     },
   },

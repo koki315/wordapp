@@ -1,10 +1,12 @@
 <template>
-  <v-card>
-    <p>{{ this.originalBody }}</p>
-    <p v-if="answer">{{ this.originalMeaning }}</p>
-    <p v-on:click="checkAnswer" v-if="!answer">意味</p>
-    <p v-on:click="closeAnswer" v-if="answer">隠す</p>
-  </v-card>
+  <v-container>
+    <v-card>
+      <h3>{{ this.originalBody }}</h3>
+      <h3 v-if="answer">{{ this.originalMeaning }}</h3>
+      <v-btn v-on:click="checkAnswer" v-if="!answer">意味</v-btn>
+      <v-btn v-on:click="closeAnswer" v-if="answer">隠す</v-btn>
+    </v-card>
+  </v-container>
 </template>
 
 <script>

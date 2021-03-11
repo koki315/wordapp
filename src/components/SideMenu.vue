@@ -1,42 +1,33 @@
 <template>
-  <div class="menu_container">
-    
+  <v-container class="menu_container">
     <WordForms />
     <RenameForms />
-    <button v-on:click="start">shuffle</button>
-    <button v-on:click="stop">stop</button>
-  </div>
+    <ShuffleButtons :afterStop='shuffleStopped'/>
+  </v-container>
 </template>
 
 <script>
 import RenameForms from "@/components/ChannelRenameForms.vue";
 import WordForms from "@/components/WordForm.vue";
+import  ShuffleButtons  from  '@/components/ShuffleButtons.vue'
 export default {
   components: {
     RenameForms,
-    WordForms,
+    WordForms,ShuffleButtons
   },
   props: {
-    startShuffle: {
+    shuffleStopped: {
       type: Function,
     },
-    stopShuffle: {
-      type: Function,
-    },
+   
   },
-  methods: {
-    start() {
-      this.startShuffle();
-    },
-    stop() {
-      this.stopShuffle();
-    },
-  },
+  
 };
 </script>
 
 <style scoped>
-.menu_container{
+.menu_container {
   height: 100vh;
 }
-</style>>
+
+</style>

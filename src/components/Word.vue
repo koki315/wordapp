@@ -1,16 +1,18 @@
 <template>
-  <v-card>
-    <p>{{ this.originalBody }}</p>
-    <p>{{ this.originalMeaning }}</p>
-    <button v-on:click="deleteWord(id)">
-      削除
-    </button>
-    <form action="" v-on:submit.prevent="update(id)">
-      <input v-model="updatedBody" type="text" />
-      <input v-model="updatedMeaning" type="text" />
-      <button>update</button>
-    </form>
-  </v-card>
+  <v-container>
+    <v-card tile>
+      <h3>{{ this.originalBody }}</h3>
+      <h3>意味: <span>{{ this.originalMeaning }}</span></h3>
+      <v-btn v-on:click="deleteWord(id)" >
+        削除
+      </v-btn>
+      <v-form v-on:submit.prevent="update(id)">
+        <v-text-field v-model="updatedBody" type="text" />
+        <v-text-field v-model="updatedMeaning" type="text" />
+        <v-btn type="submit">update</v-btn>
+      </v-form>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -84,4 +86,11 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped lang="scss">
+.v-form{
+  display: flex;
+}
+.v-text-field:nth-child(1){
+  margin-right: 10px;
+}
+</style>

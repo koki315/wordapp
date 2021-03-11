@@ -11,6 +11,7 @@ export default new Vuex.Store({
     nameOfChannel2: "channel2",
     nameOfChannel3: "channel3",
     words: [],
+    shuffle:false,loading:false
   },
   getters: {
     idToken: (state) => state.idToken,
@@ -19,6 +20,7 @@ export default new Vuex.Store({
     nameOfChannel2: (state) => state.nameOfChannel2,
     nameOfChannel3: (state) => state.nameOfChannel3,
     words: (state) => state.words,
+    
   },
   actions: {},
   mutations: {
@@ -40,6 +42,12 @@ export default new Vuex.Store({
     updateWords(state, words) {
       state.words = words;
     },
+    setShuffle(state, payload){
+      state.shuffle = payload
+    },
+    setLoading(state, payload){
+      state.loading = payload
+    },
     resetState(state, idToken, userEmail) {
       console.log("reset");
       state.idToken = "";
@@ -48,7 +56,9 @@ export default new Vuex.Store({
       state.nameOfChannel2 = "";
       state.nameOfChannel3 = "";
       state.words = []
+      state.shuffle = false;
     },
+    
   },
   plugins: [
     createPersistedState({
