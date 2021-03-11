@@ -21,6 +21,7 @@
 <script>
 import axios from "@/axios-for-auth.js";
 import User from "@/models/user.js";
+import  URL from  '../../key'
 export default {
   data: () => ({
     email: "",
@@ -30,7 +31,7 @@ export default {
   methods: {
     async Login() {
       const response = await axios.post(
-        "/accounts:signInWithPassword?key=AIzaSyA3KUKZ0t5RSfAtUlHmXKyQw2SXG-da6Eg",
+        URL.login,
         {
           email: this.email,
           password: this.password,
